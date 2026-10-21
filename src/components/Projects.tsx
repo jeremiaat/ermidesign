@@ -75,6 +75,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                     src={project.coverImage}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    style={{ objectPosition: project.coverPosition ?? 'center' }}
                     loading="lazy"
                   />
                   {/* Image Gradient Scrim */}

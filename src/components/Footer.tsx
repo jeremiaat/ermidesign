@@ -42,13 +42,13 @@ export const Footer: React.FC = () => {
                   Ermias Studio
                 </h4>
                 <span className="font-mono-code text-xs text-white/60 uppercase tracking-wider block">
-                  Art Direction & Design
+                  Art & Design
                 </span>
               </div>
             </div>
 
             <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
-              Graphic designer & art director crafting visual narratives and brand identities that leave a lasting impression.
+              Graphic designer & artist crafting visual narratives and brand identities that leave a lasting impression.
             </p>
 
             {/* Social Icons */}

@@ -5,6 +5,8 @@ export interface GalleryDetailItem {
   title: string;
   subtitle: string;
   description: string;
+  /** Renders the figure full-width at natural scale instead of cropped to a grid cell. */
+  fullWidth?: boolean;
 }
 
 export interface Project {
@@ -19,8 +21,12 @@ export interface Project {
   client: string;
   summary: string;
   coverImage: string;
+  /** CSS object-position for the cover image. Defaults to 'center'. */
+  coverPosition?: string;
   galleryImages: string[];
   galleryDetails?: GalleryDetailItem[];
+  /** Number of gallery columns on desktop. Defaults to 2. */
+  galleryColumns?: 2 | 3;
   challenge: string;
   solution: string;
   deliverables: string[];

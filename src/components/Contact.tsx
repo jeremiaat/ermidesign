@@ -207,7 +207,7 @@ export const Contact: React.FC<ContactProps> = ({ prefilledService, onShowToast 
                       <option value="Website Design">Website Design & Digital Experiences</option>
                       <option value="Social Media Design">Social Media Design & Campaigns</option>
                       <option value="Artistic Design">Artistic Design & Concept Art</option>
-                      <option value="Comprehensive Art Direction">Comprehensive Art Direction</option>
+                      <option value="Comprehensive Art & Design">Comprehensive Art & Design</option>
                     </select>
                   </div>
 

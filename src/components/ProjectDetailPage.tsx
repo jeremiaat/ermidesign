@@ -70,7 +70,8 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
         <img
           src={project.coverImage}
           alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover object-center z-0 filter brightness-90 transform scale-105 transition-transform duration-1000 ease-out"
+          className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-90 transform scale-105 transition-transform duration-1000 ease-out"
+          style={{ objectPosition: project.coverPosition ?? 'center' }}
         />
 
         {/* Cinematic Gradient Overlays */}
@@ -160,7 +161,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
 
           <div className="flex flex-col gap-1">
             <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-xs">
-              <Layers className="w-3.5 h-3.5 text-[#3B82F6]" /> Role & Direction
+              <Layers className="w-3.5 h-3.5 text-[#3B82F6]" /> Role
             </span>
             <span className="font-semibold text-[var(--text-main)] text-sm sm:text-base">
               {project.role}
@@ -281,11 +282,17 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
 
           {/* Gallery Showcase — visual first, one-line caption, details on click */}
           {project.galleryDetails && project.galleryDetails.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              className={`grid grid-cols-1 gap-6 ${
+                project.galleryColumns === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
+              }`}
+            >
               {project.galleryDetails.map((item, idx) => (
                 <figure
                   key={idx}
-                  className="group relative flex flex-col bg-[var(--card-bg)] border border-[var(--border-color)] overflow-hidden transition-all duration-300 hover:border-[#3B82F6]/50"
+                  className={`group relative flex flex-col bg-[var(--card-bg)] border border-[var(--border-color)] overflow-hidden transition-all duration-300 hover:border-[#3B82F6]/50 ${
+                    item.fullWidth ? 'md:col-span-full' : ''
+                  }`}
                 >
                   <button
                     type="button"
@@ -293,12 +300,15 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
                     className="flex flex-col h-full text-left cursor-pointer"
                     aria-label={`View ${item.title} in high resolution`}
                   >
-                    {/* Image is sized to its own aspect ratio so the full artwork is always visible, never cropped */}
+                    {/* Image is sized to its own aspect ratio so the full artwork is always visible, never cropped.
+                        Full-width figures render at natural scale for end-to-end page designs. */}
                     <div className="flex items-center justify-center overflow-hidden bg-zinc-950/20">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="max-w-full max-h-[60vh] w-auto h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        className={`w-auto h-auto object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03] ${
+                          item.fullWidth ? 'w-full' : 'max-w-full max-h-[60vh]'
+                        }`}
                         loading="lazy"
                       />
                     </div>
@@ -377,6 +387,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
                       src={item.coverImage}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      style={{ objectPosition: item.coverPosition ?? 'center' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80 z-10" />
                   </div>
