@@ -141,38 +141,38 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
           ======================================================== */}
       <div className="border-y border-[var(--border-color)] bg-[var(--card-bg)] px-6 py-6 transition-colors">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 font-mono-code text-xs sm:text-sm">
-          <div className="flex flex-col gap-1">
-            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-xs">
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-[11px]">
               <User className="w-3.5 h-3.5 text-[#3B82F6]" /> Client
             </span>
-            <span className="font-semibold text-[var(--text-main)] text-sm sm:text-base">
+            <span className="font-space font-bold text-[var(--text-main)] text-sm sm:text-base">
               {project.client}
             </span>
           </div>
 
-          <div className="flex flex-col gap-1">
-            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-xs">
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-[11px]">
               <Calendar className="w-3.5 h-3.5 text-[#3B82F6]" /> Timeline & Year
             </span>
-            <span className="font-semibold text-[var(--text-main)] text-sm sm:text-base">
+            <span className="font-space font-bold text-[var(--text-main)] text-sm sm:text-base">
               {project.timeline || '6 Weeks'} • {project.year}
             </span>
           </div>
 
-          <div className="flex flex-col gap-1">
-            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-xs">
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-[11px]">
               <Layers className="w-3.5 h-3.5 text-[#3B82F6]" /> Role
             </span>
-            <span className="font-semibold text-[var(--text-main)] text-sm sm:text-base">
+            <span className="font-space font-bold text-[var(--text-main)] text-sm sm:text-base">
               {project.role}
             </span>
           </div>
 
-          <div className="flex flex-col gap-1">
-            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-xs">
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5 text-[11px]">
               <Clock className="w-3.5 h-3.5 text-[#3B82F6]" /> Discipline
             </span>
-            <span className="font-semibold text-[#3B82F6] text-sm sm:text-base">
+            <span className="font-space font-bold text-[#3B82F6] text-sm sm:text-base">
               {project.category}
             </span>
           </div>
@@ -185,55 +185,40 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
       <SectionDivider number="01" label="Overview" />
 
       <section className="py-12 sm:py-16 px-6">
-        <div className="max-w-5xl mx-auto space-y-10">
+        <div className="max-w-5xl mx-auto space-y-12">
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-7 space-y-6">
-              <p className="text-base sm:text-xl text-[var(--text-main)] leading-relaxed font-light">
-                {project.summary}
-              </p>
+          {/* Lead statement — the single big line */}
+          <p className="font-light text-2xl sm:text-3xl leading-snug tracking-tight text-[var(--text-main)] max-w-3xl">
+            {project.summary}
+          </p>
 
-              {/* Testimonial */}
-              {project.testimonial && (
-                <div className="border-l-2 border-[#3B82F6] pl-4">
-                  <p className="font-serif italic text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-                    "{project.testimonial.text}"
-                  </p>
-                  <span className="font-mono-code text-[11px] uppercase tracking-wider text-[var(--text-muted)] mt-2 block">
-                    {project.testimonial.author} — {project.testimonial.role}
-                  </span>
-                </div>
-              )}
+          {/* The Brief & The Approach */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 border-t border-[var(--border-color)]">
+            <div>
+              <span className="font-mono-code text-xs uppercase tracking-[0.2em] text-amber-500 block mb-3">
+                The Brief
+              </span>
+              <p className="text-base text-[var(--text-muted)] leading-relaxed">{project.challenge}</p>
             </div>
-
-            {/* The Brief & The Approach */}
-            <div className="lg:col-span-5 space-y-5">
-              <div>
-                <span className="font-mono-code text-[11px] uppercase tracking-wider text-amber-500 block mb-1.5">
-                  The Brief
-                </span>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{project.challenge}</p>
-              </div>
-              <div className="pt-4 border-t border-[var(--border-color)]">
-                <span className="font-mono-code text-[11px] uppercase tracking-wider text-emerald-500 block mb-1.5">
-                  The Approach
-                </span>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{project.solution}</p>
-              </div>
+            <div>
+              <span className="font-mono-code text-xs uppercase tracking-[0.2em] text-emerald-500 block mb-3">
+                The Approach
+              </span>
+              <p className="text-base text-[var(--text-muted)] leading-relaxed">{project.solution}</p>
             </div>
           </div>
 
           {/* Deliverables & Tools */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10 border-t border-[var(--border-color)]">
             <div>
-              <h3 className="font-mono-code text-[11px] uppercase tracking-wider text-[var(--text-muted)] mb-3">
+              <span className="font-mono-code text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] block mb-4">
                 Deliverables
-              </h3>
+              </span>
               <div className="flex flex-wrap gap-2">
                 {project.deliverables.map((deliv, idx) => (
                   <span
                     key={idx}
-                    className="font-mono-code text-[11px] px-2.5 py-1 bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-main)]"
+                    className="font-mono-code text-xs px-3 py-1.5 bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-main)]"
                   >
                     {deliv}
                   </span>
@@ -241,14 +226,14 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
               </div>
             </div>
             <div>
-              <h3 className="font-mono-code text-[11px] uppercase tracking-wider text-[var(--text-muted)] mb-3">
+              <span className="font-mono-code text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] block mb-4">
                 Tools
-              </h3>
+              </span>
               <div className="flex flex-wrap gap-2">
                 {project.tools.map((tool, idx) => (
                   <span
                     key={idx}
-                    className="font-mono-code text-[11px] px-2.5 py-1 bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-main)]"
+                    className="font-mono-code text-xs px-3 py-1.5 bg-[var(--card-bg)] border border-[var(--border-color)] text-[var(--text-main)]"
                   >
                     {tool}
                   </span>
@@ -257,15 +242,35 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
             </div>
           </div>
 
-          {/* Impact */}
+          {/* Outcome */}
           {project.impact && project.impact.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
-              {project.impact.map((point, idx) => (
-                <div key={idx} className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5" />
-                  <span className="text-sm text-[var(--text-muted)] leading-snug">{point}</span>
-                </div>
-              ))}
+            <div className="pt-10 border-t border-[var(--border-color)]">
+              <span className="font-mono-code text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] block mb-4">
+                Outcome
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {project.impact.map((point, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-start gap-2.5 bg-[var(--card-bg)] border border-[var(--border-color)] p-4"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium text-[var(--text-main)] leading-snug">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Testimonial */}
+          {project.testimonial && (
+            <div className="pt-10 border-t border-[var(--border-color)] border-l-2 border-l-[#3B82F6] pl-5">
+              <p className="font-serif italic text-lg text-[var(--text-main)] leading-relaxed">
+                "{project.testimonial.text}"
+              </p>
+              <span className="font-mono-code text-[11px] uppercase tracking-wider text-[var(--text-muted)] mt-3 block">
+                {project.testimonial.author} — {project.testimonial.role}
+              </span>
             </div>
           )}
 
@@ -313,11 +318,11 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({
                       />
                     </div>
 
-                    <figcaption className="mt-auto px-4 py-3 flex items-center gap-2.5 border-t border-[var(--border-color)]">
+                    <figcaption className="mt-auto px-4 py-3 flex items-center gap-3 border-t border-[var(--border-color)]">
                       <span className="font-mono-code text-[11px] text-[#3B82F6] uppercase tracking-wider shrink-0">
                         Fig 0{idx + 1}
                       </span>
-                      <span className="font-space text-sm font-semibold text-[var(--text-main)] truncate">
+                      <span className="font-space text-base font-semibold text-[var(--text-main)] truncate">
                         {item.title}
                       </span>
                     </figcaption>
