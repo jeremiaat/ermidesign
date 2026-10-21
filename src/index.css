@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* =========================================
+   THEME VARIABLES
+   ========================================= */
+:root,
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-tertiary: #fafafa;
+  --text-main: #111111;
+  --text-muted: #555555;
+  --border-color: #e5e7eb;
+  --card-bg: #ffffff;
+  --card-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 25px 60px -15px rgba(59, 130, 246, 0.2);
+  
+  --primary-accent: #3B82F6; /* Electric Blue */
+  --dark-accent: #2563EB;
+  
+  --nav-bg: #111111;
+  --nav-text: #ffffff;
+  --nav-text-muted: #888888;
+  --nav-active-bg: #ffffff;
+  --nav-active-text: #111111;
+  --nav-border: rgba(255, 255, 255, 0.15);
+  
+  --card-dark: #1a1a1c;
+  --card-frame: #0d0d0e;
+  --muted-text: #8e8e93;
+}
+
+[data-theme="dark"],
+.dark {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --text-main: #ffffff;
+  --text-muted: #a1a1a6;
+  --border-color: #2a2a2a;
+  --card-bg: #1a1a1c;
+  --card-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  --card-shadow-hover: 0 25px 60px -15px rgba(59, 130, 246, 0.3);
+  
+  --primary-accent: #3B82F6;
+  --dark-accent: #2563EB;
+  
+  --nav-bg: #ffffff;
+  --nav-text: #111111;
+  --nav-text-muted: #666666;
+  --nav-active-bg: #111111;
+  --nav-active-text: #ffffff;
+  --nav-border: rgba(0, 0, 0, 0.15);
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Font helpers */
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Floating Navigation Animation */
+@keyframes navFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating-dock-anim {
+  animation: navFloat 4s ease-in-out infinite;
+}
+
+.floating-dock-anim:hover {
+  animation-play-state: paused;
+}
+
+/* Skill card visual styling */
+.skill-card-visual-img {
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.25));
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .skill-card-visual-img {
+  transform: scale(1.15) rotate(8deg) translateY(-8px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #3B82F6;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
